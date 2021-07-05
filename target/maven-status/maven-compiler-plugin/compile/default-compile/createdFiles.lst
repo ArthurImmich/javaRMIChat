@@ -1,0 +1,8 @@
+br\ufsm\rmichat\ServerChat.class
+br\ufsm\rmichat\IRoomChat.class
+br\ufsm\rmichat\IServerChat.class
+br\ufsm\rmichat\getNameDialog$1.class
+br\ufsm\rmichat\getNameDialog.class
+br\ufsm\rmichat\UserChat.class
+br\ufsm\rmichat\IUserChat.class
+br\ufsm\rmichat\RoomChat.class
