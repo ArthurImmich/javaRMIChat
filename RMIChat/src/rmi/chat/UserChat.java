@@ -9,7 +9,8 @@ public class UserChat extends java.rmi.server.UnicastRemoteObject implements IUs
 
 	private static final long serialVersionUID = 1534830740544346450L;
 	String name;
-	Registry registry;
+	Registry serverRegistry;
+	Registry userRegistry;
 	IServerChat server;
     IRoomChat room;
     JTextArea messageArea;
@@ -18,11 +19,12 @@ public class UserChat extends java.rmi.server.UnicastRemoteObject implements IUs
         try {
             System.setProperty("java.security.policy","file:./rmi.policy");
             System.setSecurityManager(new SecurityManager());
-            this.registry = LocateRegistry.getRegistry("192.168.2.111", 2020);
-            this.server = (IServerChat) this.registry.lookup("Servidor");
+            this.serverRegistry = LocateRegistry.getRegistry("192.168.2.111", 2020);
+            this.server = (IServerChat) this.serverRegistry.lookup("Servidor");
             GetNameDialog getNameDialog = new GetNameDialog(this);
 			getNameDialog.setVisible(true);
-			this.registry.rebind(name, this);
+			this.userRegistry = LocateRegistry.createRegistry(2020);
+			this.userRegistry.rebind(name, this);
         } catch (Exception e) {
             System.err.println("Client exception: " + e.toString());
         }

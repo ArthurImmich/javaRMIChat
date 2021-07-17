@@ -70,8 +70,8 @@ public class RoomGUI extends JFrame {
 					return;
 				}
 				try {
-					userChat.room = (IRoomChat) userChat.registry.lookup(room);
-					userChat.room.joinRoom(userChat.name, (IUserChat) userChat.registry.lookup(userChat.name));
+					userChat.room = (IRoomChat) userChat.serverRegistry.lookup(room);
+					userChat.room.joinRoom(userChat.name, (IUserChat) userChat.userRegistry.lookup(userChat.name));
 					ChatGUI chatGUI = new ChatGUI(userChat);
 					chatGUI.addWindowListener(new WindowAdapter() {
 						@Override
