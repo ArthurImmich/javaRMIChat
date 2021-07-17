@@ -23,6 +23,7 @@ public class UserChat extends java.rmi.server.UnicastRemoteObject implements IUs
             this.server = (IServerChat) this.serverRegistry.lookup("Servidor");
             GetNameDialog getNameDialog = new GetNameDialog(this);
 			getNameDialog.setVisible(true);
+            System.setProperty("java.rmi.server.hostname","192.168.2.100");
 			this.userRegistry = LocateRegistry.createRegistry(2020);
 			this.userRegistry.rebind(name, this);
         } catch (Exception e) {

@@ -17,6 +17,7 @@ public class ServerChat extends java.rmi.server.UnicastRemoteObject implements I
             this.roomList = new ArrayList<>();
             System.setProperty("java.security.policy","file:./rmi.policy");
             System.setSecurityManager(new SecurityManager());
+            System.setProperty("java.rmi.server.hostname","192.168.2.111");
             this.registry  = LocateRegistry.createRegistry(2020);
             this.registry.rebind("Servidor", this);
         } catch (Exception e) {
