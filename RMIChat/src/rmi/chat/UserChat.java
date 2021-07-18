@@ -1,5 +1,6 @@
 package rmi.chat;
 
+import java.net.InetAddress;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -21,6 +22,9 @@ public class UserChat extends java.rmi.server.UnicastRemoteObject implements IUs
             this.registry = LocateRegistry.getRegistry("192.168.2.111", 2020);
             this.server = (IServerChat) this.registry.lookup("Servidor");
             GetNameDialog getNameDialog = new GetNameDialog(this);
+            String hostName = InetAddress.getLocalHost().getHostAddress();
+            System.setProperty("java.rmi.server.hostname",  hostName);
+            System.out.println("Ip do cliente: " + hostName);
 			getNameDialog.setVisible(true);
         } catch (Exception e) {
             System.err.println("Client exception: " + e.toString());
