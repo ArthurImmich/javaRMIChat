@@ -51,7 +51,7 @@ public class GetNameDialog extends JDialog {
 						return;
 					}
 					try {
-						String[] userList = userChat.serverRegistry.list();
+						String[] userList = userChat.registry.list();
 						if(Set.of(userList).contains(newName)) {
 							JOptionPane.showMessageDialog(null, "O nome já está em uso, escolha outro nome!");
 							return;
